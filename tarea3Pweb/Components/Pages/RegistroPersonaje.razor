@@ -1,0 +1,121 @@
+@page "/registrar-personaje/{Id:int?}"
+@using tarea3Pweb.Data
+@using tarea3Pweb.models
+@using Microsoft.EntityFrameworkCore;
+@rendermode InteractiveServer
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+<h3 class="mb-4">Registrar Personaje</h3>
+
+<div class="card mb-3" style="max-width: 500px; margin: auto;">
+    <div class="card-body">
+        <EditForm Model="@personaje" OnValidSubmit="RegistrarPersonaje">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
+
+            <!-- Nombre -->
+            <div class="row">
+                <div class="col-6">
+                    <label class="col-form-label">Nombre:</label>
+                    <InputText id="nombre" class="form-control" @bind-Value="personaje.Nombre" />
+                    <ValidationMessage For="@(() => personaje.Nombre)" />
+                </div>
+
+                <!-- Apodo -->
+                <div class="col-6">
+                    <label class="col-form-label">Apodo:</label>
+                    <InputText id="apodo" class="form-control" @bind-Value="personaje.Apodo" />
+                </div>
+            </div>
+
+            <!-- Raza -->
+            <div class="form-group mb-3">
+                <label for="raza">Raza:</label>
+                <InputText id="raza" class="form-control" @bind-Value="personaje.Raza" />
+            </div>
+
+            <!-- Foto URL -->
+            <div class="form-group mb-3">
+                <label for="fotoUrl">Foto URL:</label>
+                <InputText id="fotoUrl" class="form-control" @bind-Value="personaje.FotoUrl" />
+            </div>
+
+            <!-- Edad -->
+            <div class="form-group mb-3">
+                <label for="edad">Edad:</label>
+                <InputNumber id="edad" class="form-control" @bind-Value="personaje.Edad" />
+            </div>
+
+            <!-- Poder Característico -->
+            <div class="form-group mb-3">
+                <label for="poderCaracteristico">Poder Característico:</label>
+                <InputText id="poderCaracteristico" class="form-control" @bind-Value="personaje.PoderCaracteristico" />
+            </div>
+
+            <!-- Series-->
+            <div class="form-group mb-4">
+                <label for="serie">Serie:</label>
+                <select id="serie" class="form-select" @bind="personaje.SerieId">
+                    @foreach (var serie in series)
+                    {
+                        <option value="@serie.Id">@serie.Nombre</option>
+                    }
+                </select>
+                <ValidationMessage For="@(() => personaje.SerieId)" />
+            </div>
+
+            <!-- Botón Guardar -->
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Personaje personaje = new Personaje();
+    private List<Series> series = new List<Series>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        series = await DbContext.Series.ToListAsync();
+
+        if (Id > 0)
+        {
+            var personajeExistente = await DbContext.Personajes.FindAsync(Id);
+            if (personajeExistente == null)
+            {
+                Navigation.NavigateTo("/series");
+            }
+            else
+            {
+                personaje = personajeExistente;
+            }
+        }
+
+    }
+
+    private async Task RegistrarPersonaje()
+    {
+        try
+        {
+            personaje.Series = series.Find(s => s.Id == personaje.SerieId) ?? new Series();
+            if (personaje.Id > 0)
+            {
+                DbContext.Personajes.Update(personaje);
+            }
+            else
+            {
+                DbContext.Personajes.Add(personaje);
+            }
+            await DbContext.SaveChangesAsync();
+            Navigation.NavigateTo("/personajes");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+    }
+}

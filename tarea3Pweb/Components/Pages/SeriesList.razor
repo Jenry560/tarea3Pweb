@@ -1,0 +1,91 @@
+@page "/series"
+@using tarea3Pweb.Data
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+@using Microsoft.EntityFrameworkCore;
+@using tarea3Pweb.models
+
+<h3 class="mb-4">Lista de Series</h3>
+
+<!-- Botón para agregar nueva serie -->
+<button class="btn btn-primary mb-3" @onclick="AgregarSerie">Agregar Serie</button>
+
+<!-- Tabla con Bootstrap -->
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>País</th>
+            <th>Idioma</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var serie in series)
+        {
+            <tr>
+                <td>@serie.Nombre</td>
+                @if (!string.IsNullOrEmpty(serie.FotoUrl))
+                {
+                    <td><img src="@serie.FotoUrl" alt="@serie.Nombre" class="img-thumbnail"
+                            style="width: 70px; height: 70px;" /></td>
+                }
+                else
+                {
+                    <td>
+                    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmNILEZppKJCs1LHgBaUGbbFzQJsv6b5bt-w&s"
+                            alt="@serie.Nombre" class="img-thumbnail" style="width: 70px; height: 70px;" /></td>
+                    </td>
+                }
+                <td>@serie.Pais</td>
+                <td>@serie.Idioma</td>
+                <td>
+                    <!-- Botón Editar con icono de lápiz -->
+                    <button class="btn btn-warning btn-sm me-2" @onclick="() => EditarSerie(serie.Id)">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+
+                    <!-- Botón Eliminar con icono de basura -->
+                    <button class="btn btn-danger btn-sm" @onclick="() => EliminarSerie(serie.Id)">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    private List<Series> series = new List<Series>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        series = await DbContext.Series.ToListAsync();
+    }
+
+    private void AgregarSerie()
+    {
+        // Navegar a la página de registro de series/películas/libros
+        Navigation.NavigateTo("/registrar-serie");
+    }
+
+    private void EditarSerie(int id)
+    {
+        // Navegar a la página de edición de la serie/película/libro
+        Navigation.NavigateTo($"/registrar-serie/{id}");
+    }
+
+    private async Task EliminarSerie(int id)
+    {
+        var serie = await DbContext.Series.FindAsync(id);
+        if (serie != null)
+        {
+            DbContext.Series.Remove(serie);
+            await DbContext.SaveChangesAsync();
+            series = await DbContext.Series.ToListAsync(); // Refrescar la lista
+        }
+    }
+}

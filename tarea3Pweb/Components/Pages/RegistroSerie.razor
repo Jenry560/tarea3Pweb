@@ -1,0 +1,90 @@
+﻿@page "/registrar-serie/{Id:int?}"
+@using tarea3Pweb.Data
+@using tarea3Pweb.models
+@rendermode InteractiveServer
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+<h3 class="mb-4">Registrar Serie</h3>
+<div class="card mb-3" style="max-width: 500px; margin: auto;">
+    <div class="card-body">
+        <EditForm Model="@serie" OnValidSubmit="Registrarserie">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
+
+            <!-- Nombre -->
+            <div class="form-group mb-3">
+                <label for="nombre">Nombre:</label>
+                <InputText id="nombre" class="form-control" @bind-Value="serie.Nombre" />
+            </div>
+
+            <!-- País -->
+            <div class="form-group mb-3">
+                <label for="pais">País:</label>
+                <InputText id="pais" class="form-control" @bind-Value="serie.Pais" />
+            </div>
+
+            <!-- Idioma -->
+            <div class="form-group mb-3">
+                <label for="idioma">Idioma:</label>
+                <InputText id="idioma" class="form-control" @bind-Value="serie.Idioma" />
+            </div>
+
+            <!-- Foto URL -->
+            <div class="form-group mb-3">
+                <label for="fotoUrl">Foto URL:</label>
+                <InputText id="fotoUrl" class="form-control" @bind-Value="serie.FotoUrl" />
+            </div>
+
+            <!-- Resumen -->
+            <div class="form-group mb-4">
+                <label for="resumen">Resumen:</label>
+                <InputTextArea id="resumen" class="form-control" @bind-Value="serie.Resumen" rows="4" />
+            </div>
+
+            <!-- Botón Guardar -->
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </EditForm>
+
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private Series serie = new Series();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id > 0)
+        {
+            var serieExistente = await DbContext.Series.FindAsync(Id);
+            if (serieExistente == null)
+            {
+                Navigation.NavigateTo("/series");
+            }
+            else
+            {
+                serie = serieExistente;
+            }
+        }
+
+    }
+
+
+    private async Task Registrarserie()
+    {
+        if (serie.Id > 0)
+        {
+            DbContext.Series.Update(serie);
+        }
+        else
+        {
+            Console.WriteLine(serie);
+            DbContext.Series.Add(serie);
+        }
+        await DbContext.SaveChangesAsync();
+        Navigation.NavigateTo("/series");
+
+    }
+}
