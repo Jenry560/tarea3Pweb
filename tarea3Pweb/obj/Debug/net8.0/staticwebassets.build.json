@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "98trQaZzrrrzFRlqvhDPJM6GIvKFDoP8ygkKMrDqOPQ=",
+  "Hash": "1wbeIkIlj9FN6/vbs0Pa4cd8FQAwArZeX+NAZwpd8Xw=",
   "Source": "tarea3Pweb",
   "BasePath": "_content/tarea3Pweb",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "tarea3Pweb\\wwwroot",
       "Source": "tarea3Pweb",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\",
       "BasePath": "_content/tarea3Pweb",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\tarea3Pweb.styles.css",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\tarea3Pweb.styles.css",
       "SourceId": "tarea3Pweb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "tarea3Pweb.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\tarea3Pweb.styles.css"
+      "OriginalItemSpec": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\tarea3Pweb.styles.css"
     },
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea3Pweb.bundle.scp.css",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea3Pweb.bundle.scp.css",
       "SourceId": "tarea3Pweb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "tarea3Pweb.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea3Pweb.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea3Pweb.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\app.css",
       "SourceId": "tarea3Pweb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "tarea3Pweb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "tarea3Pweb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\favicon.png",
       "SourceId": "tarea3Pweb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Deskop\\Itla\\tarea3Pweb\\tarea3Pweb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\WatersoftSRL\\Desktop\\proyectos\\tarea4Pweb\\tarea3Pweb\\wwwroot\\",
       "BasePath": "_content/tarea3Pweb",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

@@ -1,0 +1,55 @@
+@page "/series-detalles/{Id:int?}"
+@using tarea3Pweb.Data
+@using tarea3Pweb.models
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+<div class="container mt-4">
+    <div class="card shadow-lg" style="max-width: 600px; margin: auto;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                @if (!string.IsNullOrEmpty(serie.FotoUrl))
+                {
+                    <img src="@serie.FotoUrl" class="img-fluid rounded-start" alt="Foto de la Serie" />
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/150" class="img-fluid rounded-start" alt="Imagen no disponible" />
+                }
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">@serie.Nombre</h2>
+                    <h5 class="text-muted">País: @serie.Pais</h5>
+                    <h5 class="text-muted">Idioma: @serie.Idioma</h5>
+                    <p class="card-text"><strong>Resumen:</strong> @serie.Resumen</p>
+
+                    <a href="/series" class="btn btn-primary mt-3">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private Series serie = new Series();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id > 0)
+        {
+            var serieExistente = await DbContext.Series.FindAsync(Id);
+            if (serieExistente == null)
+            {
+                Navigation.NavigateTo("/series");
+            }
+            else
+            {
+                serie = serieExistente;
+            }
+        }
+
+    }
+
+}

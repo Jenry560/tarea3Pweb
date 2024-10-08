@@ -2,9 +2,10 @@
 @using tarea3Pweb.Data
 @using tarea3Pweb.models
 @inject AppDbContext DbContext
+@using Microsoft.EntityFrameworkCore;
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
-@using Microsoft.EntityFrameworkCore;
+<PageTitle>Lista de Personajes </PageTitle>
 
 <h3 class="mb-4">Lista de Personajes</h3>
 
@@ -33,6 +34,14 @@
                 <td>@personaje.Edad</td>
                 <td>@personaje.PoderCaracteristico</td>
                 <td>
+                    @* Boton de detalle *@
+
+                    <button class="btn btn-primary btn-sm me-2"
+                        @onclick="@(() => Navigation.NavigateTo($"/personaje-detalles/{personaje.Id}"))">
+                        <i class="fas fa-info-circle"></i> Detalle
+                    </button>
+
+
                     <!-- Botón Editar con icono de lápiz -->
                     <button class="btn btn-warning btn-sm me-2" @onclick="() => EditarPersonaje(personaje.Id)">
                         <i class="fas fa-edit"></i> Editar

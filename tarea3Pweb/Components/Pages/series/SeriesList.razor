@@ -5,7 +5,7 @@
 @rendermode InteractiveServer
 @using Microsoft.EntityFrameworkCore;
 @using tarea3Pweb.models
-
+<PageTitle>Lista de Series </PageTitle>
 <h3 class="mb-4">Lista de Series</h3>
 
 <!-- Botón para agregar nueva serie -->
@@ -42,6 +42,11 @@
                 <td>@serie.Pais</td>
                 <td>@serie.Idioma</td>
                 <td>
+                    <!-- Botón de detalle -->
+                    <button class="btn btn-primary btn-sm me-2"
+                        @onclick="@(() => Navigation.NavigateTo($"/series-detalles/{serie.Id}"))">
+                        <i class="fas fa-info-circle"></i> Detalle
+                    </button>
                     <!-- Botón Editar con icono de lápiz -->
                     <button class="btn btn-warning btn-sm me-2" @onclick="() => EditarSerie(serie.Id)">
                         <i class="fas fa-edit"></i> Editar

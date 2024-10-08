@@ -6,7 +6,8 @@
 @inject AppDbContext DbContext
 @inject NavigationManager Navigation
 
-<h3 class="mb-4">Registrar Personaje</h3>
+<PageTitle>Registrar Personaje </PageTitle>
+<h3 class="mb-4">@((Id > 0) ? "Editar Personaje" : "Registrar Personaje")</h3>
 
 <div class="card mb-3" style="max-width: 500px; margin: auto;">
     <div class="card-body">
@@ -86,7 +87,7 @@
             var personajeExistente = await DbContext.Personajes.FindAsync(Id);
             if (personajeExistente == null)
             {
-                Navigation.NavigateTo("/series");
+                Navigation.NavigateTo("/personajes");
             }
             else
             {

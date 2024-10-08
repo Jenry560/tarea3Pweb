@@ -1,0 +1,61 @@
+@page "/personaje-detalles/{Id:int?}"
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using tarea3Pweb.Data
+@using tarea3Pweb.models
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+@using Microsoft.EntityFrameworkCore;
+<div class="container mt-4">
+    <div class="card shadow-lg" style="max-width: 600px; margin: auto;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                @if (!string.IsNullOrEmpty(personaje.FotoUrl))
+                {
+                    <img src="@personaje.FotoUrl" class="img-fluid rounded-start" alt="Foto del personaje" />
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/150" class="img-fluid rounded-start" alt="Imagen no disponible" />
+                }
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">@personaje.Nombre (@personaje.Apodo)</h2>
+                    <h5 class="text-muted">@personaje.Raza</h5>
+                    <p class="card-text"><strong>Edad:</strong> @personaje.Edad años</p>
+                    <p class="card-text"><strong>Poder característico:</strong> @personaje.PoderCaracteristico</p>
+                    <p class="card-text"><strong>Serie/Película/Libro:</strong> @personaje.Series.Nombre</p>
+
+                    <a href="/personajes" class="btn btn-primary mt-3">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Personaje personaje = new Personaje();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        if (Id > 0)
+        {
+            var personajeExistente = await DbContext.Personajes.FindAsync(Id);
+            if (personajeExistente == null)
+            {
+                Navigation.NavigateTo("/personajes");
+            }
+            else
+            {
+                personaje = personajeExistente;
+                var seriePersonaje = await DbContext.Series.FindAsync(personaje.SerieId);
+                personaje.Series = seriePersonaje ?? new Series();
+            }
+        }
+
+    }
+}
